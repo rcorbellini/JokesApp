@@ -33,5 +33,7 @@ fun Joke.toView() = JokeView(
     iconUrl = iconUrl,
     updatedAt = updatedAt,
     url = url,
-    value = value
+    value = value.substring(0, if(value.length > 300) 300 else value.length)
 )
+
+

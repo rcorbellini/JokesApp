@@ -5,8 +5,8 @@ import com.corbellini.jokes.BuildConfig
 import com.corbellini.jokes.features.jokes.data.remote.JokeService
 import com.corbellini.jokes.features.jokes.data.repositories.JokeRepositoryImp
 import com.corbellini.jokes.features.jokes.domain.repositories.JokeRepository
-import com.corbellini.jokes.features.jokes.domain.usecases.ListRandomJokesUseCase
-import com.corbellini.jokes.features.jokes.domain.usecases.ListRandomJokesUseCaseImp
+import com.corbellini.jokes.features.jokes.domain.usecases.GetRandomJokeUseCase
+import com.corbellini.jokes.features.jokes.domain.usecases.GetRandomJokeUseCaseImp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,22 +38,8 @@ class AppModule {
                 addInterceptor(HttpLoggingInterceptor { Timber.tag("OkHttp :::\t").d(it) }
                     .apply { level = HttpLoggingInterceptor.Level.BODY }
                 )
-            }
-            .cache(Cache(context.cacheDir, 5L * 1024 * 1024))
-            .addInterceptor { forceCache(it) }
-            .build()
+            }.build()
 
-    private fun forceCache(it: Interceptor.Chain, day: Int = 7): Response {
-        val request = it.request().newBuilder().header(
-            "Cache-Control",
-            "max-stale=" + 60 * 60 * 24 * day
-        ).build()
-        val response = it.proceed(request)
-        Timber.d("provideOkHttpClient: response: $response")
-        Timber.i("provideOkHttpClient: cacheControl: ${response.cacheControl}")
-        Timber.i("provideOkHttpClient: networkResponse: ${response.networkResponse}")
-        return response
-    }
 
 
     @Provides
@@ -77,8 +63,8 @@ class AppModule {
         JokeRepositoryImp(jokeService = service)
 
     @Provides
-    fun provideListRandomJokesUseCase(jokeRepository: JokeRepository): ListRandomJokesUseCase =
-        ListRandomJokesUseCaseImp(jokeRepository = jokeRepository)
+    fun provideListRandomJokesUseCase(jokeRepository: JokeRepository): GetRandomJokeUseCase =
+        GetRandomJokeUseCaseImp(jokeRepository = jokeRepository)
 
 
 }

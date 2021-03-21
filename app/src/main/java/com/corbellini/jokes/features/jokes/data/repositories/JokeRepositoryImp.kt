@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.map
 
 class JokeRepositoryImp(private val jokeService: JokeService) : JokeRepository {
 
-    override fun listRandom(): Flow<List<Joke>> = flow {
-        emit(listOf(jokeService.getRandom()))
-    }.map { it.map { r -> r.toModel() } }
+    override fun getRandom(): Flow<Joke> = flow {
+        emit(jokeService.getRandom())
+    }.map {  r -> r.toModel() }
 }

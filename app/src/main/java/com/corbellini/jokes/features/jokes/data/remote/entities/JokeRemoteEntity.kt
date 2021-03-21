@@ -22,7 +22,7 @@ data class JokeRemoteEntity(
         id = id,
         categories= categories,
         createdAt = createdAt,
-        iconUrl=  iconUrl,
+        iconUrl=  randomUrlImage(),
         updatedAt = updatedAt,
         url = url,
         value = value
@@ -39,3 +39,13 @@ private fun Joke.toEnity() = JokeRemoteEntity(
     url = url,
     value = value
 )
+
+//Icon Url que vem do servidor nao fica bacana, emulando uma photo (url) pra usar de fundo.
+fun randomUrlImage() = when(Random().nextInt(5)){
+    1-> "https://noticias.gospelmais.com.br/files/2015/04/chuck-norris.jpg"
+    2-> "https://www.pecsma.hu/wp-content/uploads/2018/11/Chuck5.png"
+    3-> "https://dfw.cbslocal.com/wp-content/uploads/sites/15909545/2010/12/walker.jpg"
+    4-> "https://funtastik.fr/wp-content/uploads/2018/06/chuck-norris-facts.jpg"
+    5-> "https://supanova-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/Chuck_Norris_03-1024x824.jpg"
+    else -> "https://vistapointe.net/images/chuck-norris-1.jpg"
+}
