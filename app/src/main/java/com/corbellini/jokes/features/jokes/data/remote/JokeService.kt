@@ -12,7 +12,4 @@ interface JokeService {
     @GET("/jokes/random")
     suspend fun getRandom(): JokeRemoteEntity
 
-    @GET("/jokes/random?category={category}")
-    suspend fun getRandomByCategory(@Path("category") category: String): JokeRemoteEntity
-
 }

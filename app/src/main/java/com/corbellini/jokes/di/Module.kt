@@ -7,22 +7,19 @@ import com.corbellini.jokes.features.jokes.data.repositories.JokeRepositoryImp
 import com.corbellini.jokes.features.jokes.domain.repositories.JokeRepository
 import com.corbellini.jokes.features.jokes.domain.usecases.GetRandomJokeUseCase
 import com.corbellini.jokes.features.jokes.domain.usecases.GetRandomJokeUseCaseImp
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Cache
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 import javax.inject.Singleton
-import com.google.gson.GsonBuilder
 
 
 @Module
@@ -39,7 +36,6 @@ class AppModule {
                     .apply { level = HttpLoggingInterceptor.Level.BODY }
                 )
             }.build()
-
 
 
     @Provides
