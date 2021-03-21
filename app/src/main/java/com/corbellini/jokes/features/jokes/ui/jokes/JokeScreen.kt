@@ -1,4 +1,4 @@
-package com.corbellini.jokes.features.jokes.ui.jokes.list
+package com.corbellini.jokes.features.jokes.ui.jokes
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -21,8 +21,6 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.corbellini.jokes.R
-import com.corbellini.jokes.features.jokes.ui.jokes.JokeView
-import com.corbellini.jokes.features.jokes.ui.jokes.JokeViewModel
 import com.corbellini.jokes.features.jokes.ui.theme.Teal200
 import dev.chrisbanes.accompanist.glide.GlideImage
 import dev.chrisbanes.accompanist.insets.statusBarsPadding
