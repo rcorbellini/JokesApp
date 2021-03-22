@@ -12,7 +12,9 @@
     - Hilt - Is a dependency injection library for Android that reduces the boilerplate. 
     - ViewModel - To make a bridge between View and UseCases.
     - App Startup - initialize things (timber on this project) at app startup.
+- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - MVVM pattern
+- Repository pattern
 - Coroutines + Flows
 - [Accompanist](https://google.github.io/accompanist)
 - [Retrofit2](https://github.com/square/retrofit)
