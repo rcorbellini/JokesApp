@@ -1,0 +1,31 @@
+name: Analyze branch
+
+# then define on which event, here a push
+on:
+  push:
+  # and the target with some regex to match our specific  branch names
+    branches:
+      - main*
+
+jobs:
+  analyze_branch:
+
+    runs-on: ubuntu-latest
+    steps:
+      #======CONFIGURACOES DO ACTIONS======#
+      #Fazendo o clone da branch
+      - name: 'Checkout repository on branch: ${{ github.REF }}'
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.REF }}
+          fetch-depth: 0      
+
+      
+      #Configurando Pra dar o Build Android    
+      - name: Setup Android SDK      
+        uses: android-actions/setup-android@v2
+  
+      #Executando os Testes
+      - name: Run all Test
+        run: |
+          ./gradlew test
