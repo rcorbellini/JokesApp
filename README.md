@@ -1,4 +1,5 @@
 # Jokes App
+[![Analyze & Test branch](https://github.com/rcorbellini/JokesApp/actions/workflows/analyze_branch.yml/badge.svg)](https://github.com/rcorbellini/JokesApp/actions/workflows/analyze_branch.yml)
 
   This project is a project to sort a random chuck-norris joke from  https://api.chucknorris.io
 
@@ -20,3 +21,4 @@
 - [Retrofit2](https://github.com/square/retrofit)
 - [Timber](https://github.com/JakeWharton/timber)
 - [mockito](https://github.com/mockito/mockito)
+- GitHub Actions - CI
