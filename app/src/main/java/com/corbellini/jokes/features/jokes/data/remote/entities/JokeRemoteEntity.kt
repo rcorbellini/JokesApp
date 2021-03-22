@@ -30,7 +30,7 @@ data class JokeRemoteEntity(
 }
 
 
-private fun Joke.toEnity() = JokeRemoteEntity(
+fun Joke.toEnity() = JokeRemoteEntity(
     id = id,
     categories= categories,
     createdAt = createdAt,

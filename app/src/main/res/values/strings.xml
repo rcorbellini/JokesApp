@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Jokes App</string>
+    <string name="on_error">Aconteceu um erro, verifique sua internet e tente novamente</string>
 </resources>

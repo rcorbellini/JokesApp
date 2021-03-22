@@ -1,7 +1,6 @@
 package com.corbellini.jokes.features.jokes.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltNavGraphViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,7 +12,6 @@ sealed class NavScreens(val route: String) {
     object MAIN : NavScreens("main")
 }
 
-@Preview
 @Composable
 fun NavGraph(startDestination: NavScreens = NavScreens.MAIN) {
     val navController = rememberNavController()

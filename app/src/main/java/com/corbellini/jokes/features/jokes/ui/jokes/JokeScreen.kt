@@ -3,6 +3,7 @@ package com.corbellini.jokes.features.jokes.ui.jokes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -30,6 +31,8 @@ fun JokeScreen(
     viewModel: JokeViewModel
 ) {
     val jokes = viewModel.jokes.collectAsState()
+    val loading = viewModel.loading.collectAsState()
+    val error = viewModel.error.collectAsState()
     val actionRandomJoke = viewModel::dispatchRandomJoke
 
     Scaffold(
@@ -42,7 +45,8 @@ fun JokeScreen(
         }
     ) {
         val modifier = Modifier.padding(it)
-        Body(modifier, jokes.value)
+
+        Body(modifier, jokes.value, loading.value, error.value)
     }
 }
 
@@ -50,9 +54,13 @@ fun JokeScreen(
 private fun Body(
     modifier: Modifier = Modifier,
     jokes: List<JokeView>,
+    loading: Boolean,
+    error: Int?
 ) {
     Column(
         modifier = modifier
+            .fillMaxWidth()
+            .padding(4.dp)
             .verticalScroll(rememberScrollState())
             .statusBarsPadding()
     ) {
@@ -64,6 +72,25 @@ private fun Body(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
+        if(error != null){
+            Box(
+                modifier = Modifier.fillMaxWidth().padding(4.dp)
+                    .background(
+                        color = Color.Red
+                    )
+            ) {
+                Text(
+                    stringResource(id = error),
+                    color = Color.White,
+                    modifier = modifier.fillMaxWidth().padding(4.dp),)}
+        }
+        if(loading){
+            LinearProgressIndicator(
+                modifier = modifier.fillMaxWidth(),
+                color = Color.White
+                ,backgroundColor = Color.Cyan
+            )
+        }
         jokes.forEach {
             JokeContent(
                 joke = it,

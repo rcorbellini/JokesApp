@@ -2,6 +2,7 @@ package com.corbellini.jokes.features.jokes.ui.jokes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.corbellini.jokes.R
 import com.corbellini.jokes.features.jokes.domain.usecases.GetRandomJokeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +19,13 @@ class JokeViewModel @Inject constructor(
     private val _jokes = MutableStateFlow<List<JokeView>>(mutableListOf())
     val jokes get() = _jokes
 
+    private val _loading = MutableStateFlow(true)
+    val loading get() = _loading
+
+
+    private val _error = MutableStateFlow<Int?>(null)
+    val error get() = _error
+
     init {
         Timber.i("Init ViewModel")
         randomJoke()
@@ -31,13 +39,17 @@ class JokeViewModel @Inject constructor(
         val list: MutableList<JokeView> = mutableListOf()
         list.addAll(_jokes.value)
         getRandomJoke.call().flowOn(Dispatchers.IO)
+            .onStart {  _loading.value = true
+                        _error.value = null}
             .onEach { jokeModel ->
                 _jokes.value = mutableListOf<JokeView>().apply {
                     addAll(_jokes.value)
                     add(jokeModel.toView())
                 }
             }
-            .catch { e -> e.printStackTrace() }
+            .onCompletion {
+                _loading.value = false }
+            .catch { _error.value = R.string.on_error}
             .launchIn(viewModelScope)
     }
 
