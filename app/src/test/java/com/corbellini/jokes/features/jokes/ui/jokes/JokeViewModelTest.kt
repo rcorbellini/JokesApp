@@ -6,9 +6,7 @@ import com.corbellini.jokes.features.jokes.domain.usecases.GetRandomJokeUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -24,11 +22,9 @@ import org.junit.Assert
 import org.mockito.Mockito.times
 import java.util.*
 import kotlin.time.ExperimentalTime
-import kotlin.time.seconds
 
 class JokeViewModelTest {
 
-    private lateinit var jokeViewModel: JokeViewModel
     @Mock
     private lateinit var getRandomJokeUseCaseMock: GetRandomJokeUseCase
 
@@ -41,7 +37,6 @@ class JokeViewModelTest {
         Dispatchers.setMain(testDispatcher)
 
         MockitoAnnotations.openMocks(this)
-        jokeViewModel = JokeViewModel(getRandomJoke = getRandomJokeUseCaseMock)
 
         MockitoAnnotations.openMocks(this)
     }
@@ -93,7 +88,7 @@ class JokeViewModelTest {
             ).`when`(getRandomJokeUseCaseMock).call()
 
             //act
-            jokeViewModel = JokeViewModel(getRandomJoke = getRandomJokeUseCaseMock)
+            val jokeViewModel = JokeViewModel(getRandomJoke = getRandomJokeUseCaseMock)
             val result  = jokeViewModel.jokes
             //assert
             verify(getRandomJokeUseCaseMock).call()
@@ -167,7 +162,7 @@ class JokeViewModelTest {
             ).`when`(getRandomJokeUseCaseMock).call()
 
             //act
-            jokeViewModel = JokeViewModel(getRandomJoke = getRandomJokeUseCaseMock)
+            val jokeViewModel = JokeViewModel(getRandomJoke = getRandomJokeUseCaseMock)
             delay(100)
             jokeViewModel.dispatchRandomJoke()
 
