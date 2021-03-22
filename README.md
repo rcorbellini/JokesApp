@@ -9,11 +9,13 @@
 </p
   
 ## Architecture
+
 <p  align="center">  
 <img src="architecture.jpg" width="33%"/>
 </p
   
 ## Stack
+
 - [Jetpack](https://developer.android.com/jetpack)
     - Compose - To Create UI programmatically with composable functions.
     - Hilt - Is a dependency injection library for Android that reduces the boilerplate. 
