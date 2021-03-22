@@ -5,7 +5,10 @@ import com.corbellini.jokes.features.jokes.domain.model.Joke
 import com.corbellini.jokes.features.jokes.domain.usecases.GetRandomJokeUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -106,6 +109,7 @@ class JokeViewModelTest {
         runBlocking {
             //arrange
             val id = "id"
+            val id2 = "id2"
             val categories = emptyList<String>()
             val createdAt = Date()
             val iconUrl = "iconUrl"
@@ -122,8 +126,28 @@ class JokeViewModelTest {
                 url = url,
                 value = value,
             )
+
+            val joke2 = Joke(
+                id = id2,
+                categories = categories,
+                iconUrl = iconUrl,
+                updatedAt = updatedAt,
+                createdAt = createdAt,
+                url = url,
+                value = value,
+            )
+
             val jokeView = JokeView(
                 id = id,
+                categories = categories,
+                iconUrl = iconUrl,
+                updatedAt = updatedAt,
+                createdAt = createdAt,
+                url = url,
+                value = value,
+            )
+            val jokeView2 = JokeView(
+                id = id2,
                 categories = categories,
                 iconUrl = iconUrl,
                 updatedAt = updatedAt,
@@ -135,19 +159,27 @@ class JokeViewModelTest {
 
             Mockito.doReturn(
                 flow {
-                    emit(joke)
+                        emit(joke)
+                },
+                flow {
+                    emit(joke2)
                 }
             ).`when`(getRandomJokeUseCaseMock).call()
 
             //act
             jokeViewModel = JokeViewModel(getRandomJoke = getRandomJokeUseCaseMock)
+            delay(100)
             jokeViewModel.dispatchRandomJoke()
+
             val result  = jokeViewModel.jokes
+
 
             //assert
             verify(getRandomJokeUseCaseMock, times(2)).call()
             result.test{
-                Assert.assertEquals(jokeView ,  expectItem().first())
+                val list = expectItem()
+                Assert.assertEquals(jokeView ,  list[0])
+                Assert.assertEquals(jokeView2 ,  list[1])
             }
         }
     }
