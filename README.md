@@ -3,10 +3,16 @@
 
   This project is a project to sort a random chuck-norris joke from  https://api.chucknorris.io
 
+## Result
 <p  align="center">
 <img src="joke_app.gif" width="33%"/>
 </p
-
+  
+## Architecture
+<p  align="center">  
+<img src="architecture.jpg" width="33%"/>
+</p
+  
 ## Stack
 - [Jetpack](https://developer.android.com/jetpack)
     - Compose - To Create UI programmatically with composable functions.
