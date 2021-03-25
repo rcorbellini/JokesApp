@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion '1.4.31'
+    }
+}
+
+dependencies {
+    implementation project(path: submodules.domain)
+
+    //timber
+    implementation kotlinDependencies.timber
+
+    // accompanist
+    implementation androidDependencies.accompanistGlide
+    implementation androidDependencies.accompanistInsets
+
+    //hilt
+    implementation androidDependencies.hiltNavigationFragment
+    implementation androidDependencies.hiltNavigationCompose
+    implementation androidDependencies.androidXHilt
+    implementation androidDependencies.hiltDagger
+    kapt androidDependencies.androidXHiltCompiler
+    kapt androidDependencies.hiltDaggerCompiler
+
+    //androidX
+    implementation androidDependencies.androidXNavigation
+    implementation androidDependencies.androidXAppCompat
+    debugImplementation androidDependencies.androidXCompose
+
+    //AndroidX compose
+     implementation androidDependencies.androidXCompose
+     implementation androidDependencies.androidXLifecycleVMCompose
+     implementation androidDependencies.androidXActivityCompose
+     implementation androidDependencies.androidXNavigationCompose
+     implementation androidDependencies.androidXUiCompose
+     implementation androidDependencies.androidXMaterialCompose
+     implementation androidDependencies.androidXMaterialIconsCompose
+     implementation androidDependencies.androidXConstraintLayoutCompose
+}

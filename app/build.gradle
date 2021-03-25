@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
@@ -14,7 +15,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.corbellini.myapplication"
+        applicationId "com.corbellini.jokes"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -48,6 +49,9 @@ android {
 
 
 dependencies {
+    implementation project(path: submodules.domain)
+    implementation project(path: submodules.data)
+    implementation project(path: submodules.presentation)
 
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.31"

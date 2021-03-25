@@ -1,5 +1,7 @@
 package com.corbellini.jokes.features.jokes.data.remote.entities
 
+import com.corbellini.data.features.jokes.remote.entities.JokeRemoteEntity
+import com.corbellini.data.features.jokes.remote.entities.randomUrlImage
 import com.corbellini.jokes.features.jokes.domain.model.Joke
 import io.mockk.every
 import io.mockk.mockkStatic

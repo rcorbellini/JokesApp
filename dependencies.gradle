@@ -1,0 +1,98 @@
+ext {
+    //=============================================
+    //-->Versions<--
+    KOIN = '2.0.1'
+    COROUTINES_CORE = '1.4.3'
+    TIMBER = '4.7.1'
+
+
+    //-->Versions Android<--
+    ACCOMPANIST = '0.6.2'
+    HILT_NAV_COMPOSE = '1.0.0-alpha01'
+    HILT_NAV_FRAGMENT = '1.0.0-beta01'
+    HILT_DAGGER = '2.33-beta'
+
+    AX_NAVIGATION = '1.0.0-alpha09'
+    AX_COMPOSE = '1.0.0-beta02'
+    AX_APPCOMPAT = '1.2.0'
+    AX_CORE = '1.3.2'
+    AX_HILT = '1.0.0-beta01'
+
+
+    //-->Versions Test<--
+    JUNIT = '4.13.2'
+    KT_COROUTINES_TEST = '1.4.3'
+    TURBINE = '0.4.1'
+    MOCKITO = '3.7.0'
+    MOCKK = '1.11.0'
+    KOIN_TEST = '2.0.1'
+
+    //-->Versions Android Test<--
+    ACORE_TEST = '1.3.0'
+    AEXT_TEST = '1.1.2'
+    EXPRESSO = '3.3.0'
+
+
+    //=============================================
+
+    //-->Submodules<--
+    submodules = [
+            domain      : ':domain',
+            data        : ':data',
+            presentation: ':presentation',
+    ]
+
+    //--->Kotlin dependencies<---
+    kotlinDependencies = [
+            coroutines                      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${COROUTINES_CORE}",
+            timber                          : "com.jakewharton.timber:timber:${TIMBER}"
+    ]
+
+    androidDependencies = [
+            //Accompanist
+            accompanistGlide                : "dev.chrisbanes.accompanist:accompanist-glide:${ACCOMPANIST}",
+            accompanistInsets               : "dev.chrisbanes.accompanist:accompanist-insets:${ACCOMPANIST}",
+
+            //Hilt
+            hiltNavigationFragment          : "androidx.hilt:hilt-navigation-fragment:${HILT_NAV_FRAGMENT}",
+            hiltNavigationCompose           : "androidx.hilt:hilt-navigation-compose:${HILT_NAV_COMPOSE}",
+            hiltDagger                      : "com.google.dagger:hilt-android:${HILT_DAGGER}",
+            hiltDaggerCompiler              : "com.google.dagger:hilt-compiler:${HILT_DAGGER}",
+
+            //AndoidX
+            androidXNavigation              : "androidx.navigation:navigation-compose:${AX_NAVIGATION}",
+            androidXCore                    : "androidx.core:core-ktx:${AX_CORE}",
+            androidXAppCompat               : "androidx.appcompat:appcompat:${AX_APPCOMPAT}",
+            androidXHilt                    : "androidx.hilt:hilt-common:${AX_HILT}",
+            androidXHiltCompiler            : "androidx.hilt:hilt-compiler:${AX_HILT}",
+
+            //AndoidX Compose
+            androidXLifecycleVMCompose      : "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03",
+            androidXActivityCompose         : "androidx.activity:activity-compose:1.3.0-alpha04",
+            androidXNavigationCompose       : "androidx.navigation:navigation-compose:1.0.0-alpha09",
+            androidXConstraintLayoutCompose : "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha05",
+            androidXCompose                 : "androidx.compose.ui:ui-tooling:${AX_COMPOSE}",
+            androidXUiCompose               : "androidx.compose.ui:ui:${AX_COMPOSE}",
+            androidXMaterialCompose         : "androidx.compose.material:material:${AX_COMPOSE}",
+            androidXMaterialIconsCompose    : "androidx.compose.material:material-icons-extended:${AX_COMPOSE}",
+
+    ]
+
+    //--->Test dependencies<---
+    kotlinTestDependencies = [
+            junit                           : "junit:junit:${JUNIT}",
+            coroutines                      : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${KT_COROUTINES_TEST}",
+            turbine                         : "app.cash.turbine:turbine:${TURBINE}",
+            mockito                         : "org.mockito:mockito-core:${MOCKITO}",
+            mockk                           : "io.mockk:mockk:${MOCKK}",
+            koin                            : "org.koin:koin-test:${KOIN_TEST}"
+    ]
+
+    //--->Android Test Dependencies<---
+    androidTestDependencies = [
+            core                            : "androidx.test:core:${ACORE_TEST}",
+            extension                       : "androidx.test.ext:junit:${AEXT_TEST}",
+            expresso                        : "androidx.test.espresso:espresso-core:${EXPRESSO}"
+    ]
+
+}

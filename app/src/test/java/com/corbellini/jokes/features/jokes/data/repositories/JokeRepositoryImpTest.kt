@@ -1,12 +1,11 @@
 package com.corbellini.jokes.features.jokes.data.repositories
 
 import com.corbellini.jokes.features.jokes.data.remote.JokeService
-import com.corbellini.jokes.features.jokes.data.remote.entities.JokeRemoteEntity
-import com.corbellini.jokes.features.jokes.data.remote.entities.randomUrlImage
+import com.corbellini.data.features.jokes.remote.entities.JokeRemoteEntity
+import com.corbellini.data.features.jokes.remote.entities.randomUrlImage
 import com.corbellini.jokes.features.jokes.domain.model.Joke
 import io.mockk.every
 import io.mockk.mockkStatic
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Before
