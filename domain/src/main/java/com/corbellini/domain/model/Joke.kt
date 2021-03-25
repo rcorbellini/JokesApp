@@ -1,4 +1,4 @@
-package com.corbellini.domain.features.jokes.model
+package com.corbellini.domain.model
 
 import java.util.*
 

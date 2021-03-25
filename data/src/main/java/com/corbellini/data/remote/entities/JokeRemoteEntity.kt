@@ -1,6 +1,6 @@
 package com.corbellini.data.features.jokes.remote.entities
 
-import com.corbellini.domain.features.jokes.model.Joke
+import com.corbellini.domain.model.Joke
 import com.google.gson.annotations.SerializedName
 import java.util.*
 

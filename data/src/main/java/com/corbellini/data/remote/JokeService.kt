@@ -1,4 +1,4 @@
-package com.corbellini.data.features.jokes.remote
+package com.corbellini.data.remote
 
 import com.corbellini.data.features.jokes.remote.entities.JokeRemoteEntity
 import retrofit2.http.GET

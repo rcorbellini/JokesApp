@@ -39,7 +39,7 @@ ext {
     submodules = [
             domain      : ':domain',
             data        : ':data',
-            presentation: ':presentation',
+            presentation: ':features:chucknorris-joke',
     ]
 
     //--->Kotlin dependencies<---

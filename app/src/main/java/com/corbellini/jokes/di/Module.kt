@@ -1,11 +1,11 @@
 package com.corbellini.jokes.di
 
 import android.content.Context
-import com.corbellini.data.features.jokes.remote.JokeService
-import com.corbellini.data.features.jokes.repositories.JokeRepositoryImp
-import com.corbellini.domain.features.jokes.repositories.JokeRepository
-import com.corbellini.domain.features.jokes.usecases.GetRandomJokeUseCase
-import com.corbellini.domain.features.jokes.usecases.GetRandomJokeUseCaseImp
+import com.corbellini.data.remote.JokeService
+import com.corbellini.data.repositories.JokeRepositoryImp
+import com.corbellini.domain.repositories.JokeRepository
+import com.corbellini.domain.usecases.GetRandomJokeUseCase
+import com.corbellini.domain.usecases.GetRandomJokeUseCaseImp
 import com.corbellini.jokes.BuildConfig
 import com.google.gson.GsonBuilder
 import dagger.Module

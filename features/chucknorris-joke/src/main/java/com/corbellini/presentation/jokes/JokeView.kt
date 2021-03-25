@@ -1,6 +1,6 @@
 package com.corbellini.presentation.jokes
 
-import com.corbellini.domain.features.jokes.model.Joke
+import com.corbellini.domain.model.Joke
 import java.util.*
 
 data class JokeView(

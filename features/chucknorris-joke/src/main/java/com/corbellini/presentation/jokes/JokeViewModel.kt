@@ -2,7 +2,7 @@ package com.corbellini.presentation.jokes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.corbellini.domain.features.jokes.usecases.GetRandomJokeUseCase
+import com.corbellini.domain.usecases.GetRandomJokeUseCase
 import com.corbellini.presentation.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

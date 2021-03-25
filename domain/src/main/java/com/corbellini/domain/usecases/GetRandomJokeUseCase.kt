@@ -1,6 +1,7 @@
-package com.corbellini.domain.features.jokes.usecases
-import com.corbellini.domain.features.jokes.model.Joke
-import com.corbellini.domain.features.jokes.repositories.JokeRepository
+package com.corbellini.domain.usecases
+
+import com.corbellini.domain.model.Joke
+import com.corbellini.domain.repositories.JokeRepository
 import kotlinx.coroutines.flow.Flow
 
 interface GetRandomJokeUseCase {
